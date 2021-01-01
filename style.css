@@ -1,0 +1,225 @@
+header {
+    background: url('./bg.png');
+    height: 50vh;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100vw;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: candara, monospace;
+}
+
+.budget-info {
+    width: 40vw;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.budget-info .info-text{
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+.budget-info .total-budget {
+    color: #ffffff;
+    font-size: 50px;
+    text-align: center;
+}
+
+.budget-info .income-figures {
+    width: 30vw;
+    height: 50px;
+    background: rgb(49, 187, 111);
+    clear: both;
+    margin: 20px auto 0 auto;
+}
+
+
+.budget-info .income-text {
+    float: left;
+    color:rgb(39, 41, 40);
+    padding: 15px 10px 10px 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.budget-info .income-budget {
+    float: right;
+    color:#fff;
+    font-size: 35px;
+    padding-right: 50px;
+}
+
+
+.budget-info .expense-figures {
+    width: 30vw;
+    height: 50px;
+    background: rgb(218, 42, 42);
+    clear: both;
+    margin: 20px auto 0 auto;
+}
+
+
+.budget-info .expense-text {
+    float: left;
+    color:rgb(39, 41, 40);
+    padding: 15px 10px 10px 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.budget-info .expense-budget {
+    float: right;
+    color:#fff;
+    font-size: 35px;
+}
+
+.budget-info .expense-percentage {
+    float: right;
+    color:#fff;
+    font-size: 10px;
+    margin: 15px 10px 10px 10px;
+    background:rgb(245, 119, 119);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+main {
+    background: rgb(240, 231, 231);
+    padding: 15px;
+}
+
+main .input-figures{
+    width: 50vw;
+    margin: 0 auto;
+}
+
+main .input-figures select {
+    border: 1px solid #ccc;
+    color: rgb(39, 41, 40);
+    padding: 10px;
+    margin-right: 10px;  
+}
+
+
+main .input-figures select:focus, main .input-figures input:focus, main .input-figures .add-btn:focus {
+    outline: none;
+}
+
+main .input-figures .add-description {
+    border: 1px solid #ccc;
+    color: rgb(39, 41, 40);
+    width: 450px;
+    padding: 10px;
+    margin-right: 10px;  
+}
+
+main .input-figures .add-budget {
+    border: 1px solid #ccc;
+    color: rgb(39, 41, 40);
+    width: 100px;
+    padding: 10px;
+    margin-right: 10px;  
+}
+
+main .input-figures .add-btn {
+    border: 1px solid rgb(65, 12, 211);
+    color: rgb(39, 41, 40);
+    padding: 10px;
+    text-transform: uppercase;
+    transition: background 1s linear;
+    border-radius: 5px;
+}
+
+main .input-figures .add-btn:hover {
+    background: rgb(65, 12, 211);
+}
+
+
+section {
+    display: table;
+    padding: 15px;
+    width: 100vw;
+}
+
+section .budget-list {
+    width: 60vw;
+    margin: 0 auto;
+}
+
+section .budget-list h2 {
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+section .budget-list .income-title {
+    color: rgb(49, 187, 111);
+}
+
+section .budget-list .expense-title {
+    color: rgb(218, 42, 42);
+}
+
+section .budget-list .income-list, section .budget-list .expense-list {
+    width: 25vw;
+    float: left;
+}
+
+section .budget-list .space {
+    width: 10vw;
+    float: left;
+    height: 10vw;
+}
+
+
+
+.item {
+    width: 30vw;
+    height: 50px;
+    background: rgb(240, 231, 231);
+    clear: both;
+}
+
+
+.item .item-list {
+    float: left;
+    color:rgb(39, 41, 40);
+    padding: 15px 10px 10px 10px;
+    font-weight: bold;
+}
+
+.item .item-budget {
+    float: right;
+    color: rgb(39, 41, 40);
+    font-size: 18px;
+    margin: 15px 10px 10px 10px;
+}
+
+.item .item-percentage {
+    float: right;
+    color:#fff;
+    font-size: 10px;
+    margin: 15px 10px 10px 10px;
+    background:rgb(245, 119, 119);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* add some more styles to make the button appear in linear motion */
+
+.item .item-delete {
+    float: right;
+    color:rgb(218, 42, 42);
+    margin: 10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    border: 1px solid rgb(218, 42, 42);
+    display: none;
+    transition: margin 4s linear;
+}

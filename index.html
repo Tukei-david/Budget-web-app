@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget web app</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="budget-info">
+            <p class="info-text">Availabale budget in Month</p>
+            <p class="total-budget">+ 0.00</p>
+
+            <div class="income-figures">
+                <p class="income-text">Income</p>
+                <p class="income-budget">+ 0.00</p>
+            </div>
+
+            <div class="expense-figures">
+                <p class="expense-text">expense</p>
+                <p class="expense-percentage">- 30%</p>
+                <p class="expense-budget">+ 0.00</p>
+            </div>
+        </div>
+    </header>
+
+    <main>  
+        <div class="input-figures">
+            <select class="add-type">
+                <option value="inc" selected>+</option>
+                <option value="exp">-</option>
+            </select>
+            <input type="text" class="add-description" placeholder="Add Description">
+            <input type="number" class="add-budget" placeholder="Value">
+            <button class="add-btn">Ok</button>
+        </div>
+    </main>
+
+    <section>
+        <div class="budget-list">
+            <div class="income-list">
+                <h2 class="income-title">Income</h2>
+                <div class="inc-list">
+
+                </div>
+            </div>
+            <div class="space"></div>
+            <div class="expense-list">
+                <h2 class="expense-title">Expense</h2>
+                <div class="exp-list">
+
+
+                    <!-- <div class="item">
+                        <p class="item-list">Grocery</p>
+                        <button class="item-delete">x</button>
+                        <p class="item-percentage">- 30%</p>
+                        <p class="item-budget">+ 0.00</p>
+                    </div> -->
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
