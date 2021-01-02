@@ -3,7 +3,6 @@ header {
     height: 50vh;
     background-size: cover;
     background-attachment: fixed;
-    width: 100vw;
 }
 
 * {
@@ -53,7 +52,7 @@ header {
     float: right;
     color:#fff;
     font-size: 35px;
-    padding-right: 50px;
+    padding-right: 38px;
 }
 
 
@@ -143,10 +142,9 @@ main .input-figures .add-btn:hover {
 
 
 section {
-    display: table;
     padding: 15px;
-    width: 100vw;
 }
+
 
 section .budget-list {
     width: 60vw;
@@ -194,9 +192,16 @@ section .budget-list .space {
     font-weight: bold;
 }
 
+.exp-list .item-budget {
+    color:rgb(218, 42, 42);
+}
+
+.inc-list .item-budget {
+    color: rgb(49, 187, 111);
+}
+
 .item .item-budget {
     float: right;
-    color: rgb(39, 41, 40);
     font-size: 18px;
     margin: 15px 10px 10px 10px;
 }
@@ -219,7 +224,27 @@ section .budget-list .space {
     margin: 10px;
     padding: 5px 10px;
     border-radius: 50%;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .7s linear;
+    cursor: pointer;
+}
+
+.inc-list .item-delete {
+    color: rgb(49, 187, 111);
+    border: 1px solid rgb(49, 187, 111);
+}
+
+.exp-list .item-delete {
+    color:  rgb(218, 42, 42);
     border: 1px solid rgb(218, 42, 42);
-    display: none;
-    transition: margin 4s linear;
+}
+
+.item .item-delete:focus {
+    outline: none;
+}
+
+.item:hover > .item-delete {
+    visibility: visible;
+    opacity: 1;
 }
