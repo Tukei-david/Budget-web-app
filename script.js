@@ -165,6 +165,33 @@ var budgetController = (function() {
                 data.percentage = -1
             }
         },
+
+        /**
+         * Will handle deletion of expense and income items.
+         */
+        deleteItem: function(type, id) {
+            var index, ids
+
+            /**
+             * Loop through a new created array.
+             * This will help to find the the index of an id targeted.
+             * Map returns a brand new array
+             */
+            ids = data.allItems[type].map(function(current) {
+                return current.id
+            })
+
+            // This will get the index number of an item in array
+            // Index will be -1 incase the item id is not found in the array.
+            index = ids.indexOf(id)
+
+            if(index !== -1) {
+                // splice method will remove item on the index number.
+                // 1 argument means removing one item only in the array.
+                data.allItems[type].splice(index, 1)
+            }
+
+        },
         /**
          * Will return the toal budget
          */
@@ -175,6 +202,9 @@ var budgetController = (function() {
                 totalExp: data.total.exp,
                 percentage: data.percentage
             }
+        },
+        testing: function() {
+            console.log(data)
         }
     }
 
@@ -217,7 +247,8 @@ var UIController = (function() {
         totalBudget: '.total-budget',
         totalExp: '.expense-budget',
         totalInc: '.income-budget',
-        expPercent: '.expense-percentage'
+        expPercent: '.expense-percentage',
+        eventDelegation: 'section'
     }
 
     /**
@@ -254,13 +285,13 @@ var UIController = (function() {
                 element = DOMStrings.incomeList
 
                 // ELement to be stored
-                html = '<div class="item" id="income-%id%"> <p class="item-list">%description%</p><button class="item-delete">x</button><p class="item-budget">+ %value%</p></div>'
+                html = '<div class="item" id="inc-%id%"> <p class="item-list">%description%</p><button class="item-delete">x</button><p class="item-budget">+ %value%</p></div>'
             }else if (type === 'exp') {
                 // Select the container for expense list
                 element = DOMStrings.expenseList
 
                 // ELement to be stored
-                html = '<div class="item" id="expense-%id%"><p class="item-list">%description%</p><button class="item-delete">x</button><p class="item-percentage">- 30%</p><p class="item-budget">- %value%</p></div>'
+                html = '<div class="item" id="exp-%id%"><p class="item-list">%description%</p><button class="item-delete">x</button><p class="item-percentage">- 30%</p><p class="item-budget">- %value%</p></div>'
             }
            
             // Replace the placeholder text with actual data from new items created
@@ -315,6 +346,26 @@ var UIController = (function() {
         },
 
         /**
+         * Delete expense and income item in UI
+         */
+        deleteListItem: function(selectorID) {
+
+            /**
+             * In Javascript you allowed to only delete the child element
+             * We will select the parent element of the item list.
+             * Then remove the child element with the id specified.
+             */
+
+            // Select the child element
+            var child = document.getElementById(selectorID);
+
+            // Select the parent element
+            var list = child.parentNode;
+            
+            // Delete the child element.
+            list.removeChild(child);
+        },
+        /**
          * Exposing the DOMstrings outside other modules.
         */
         getDOMStrings: function() {
@@ -349,7 +400,7 @@ var appController = (function(budgetCtrl, UIctrl) {
     var initFunction = function() {
 
         /**
-         * Getting the btn class DOM strings that was exposed.
+         * Getting the button class DOM strings that was exposed.
          */
         var DOM = UIController.getDOMStrings()
 
@@ -371,6 +422,12 @@ var appController = (function(budgetCtrl, UIctrl) {
                 ctrlAddItem()
             }
         })
+
+        /**
+         * Select the parent element of expense and income items.
+         * This will help in event delegation.
+         */
+        document.querySelector(DOM.eventDelegation).addEventListener('click', ctrlDeleteItem)
 
     }
 
@@ -410,7 +467,6 @@ var appController = (function(budgetCtrl, UIctrl) {
             
             // Add the item to the budget controller
             newItem = budgetController.addItem(input.type, input.description, input.value)
-            console.log(newItem)
             
             // Add the item to the UI 
             UIController.addListItem(newItem, input.type)
@@ -426,12 +482,43 @@ var appController = (function(budgetCtrl, UIctrl) {
 
     }
 
+    /**
+     * Used to delete expense and income items when clicked
+     * Used to update the budget and items total
+     */
+    var ctrlDeleteItem = function(event) {
+        var itemID, splitID, type, ID;
+        itemID = event.target.parentNode.id
+        console.log(itemID)
+        /**
+         * Help to work only if there is an ID in parent element
+         */
+        if (itemID) {
+             
+            // We use split method to split the string (item id from its actual ID)
+            splitID = itemID.split('-')
+            type = splitID[0]
+            // This will be string so it needs to be changed into an interger
+            ID = parseInt(splitID[1])
+
+            // delete an item from data structure
+            budgetController.deleteItem(type, ID)
+
+            // delete an item from UI.
+            UIController.deleteListItem(itemID)
+
+            // update and show new budget.
+            updateBudget()
+        }
+
+    }
+
     return {
         /**
          * FUnction to start the application
          */
         init: function () {
-            console.log('Application has started')
+            console.log('Application has started')   
             UIController.displayBudget({
                 budget: 0,
                 totalInc: 0,

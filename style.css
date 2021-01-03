@@ -147,8 +147,9 @@ section {
 
 
 section .budget-list {
-    width: 60vw;
+    width: 70vw;
     margin: 0 auto;
+    background: #908089;
 }
 
 section .budget-list h2 {
@@ -165,7 +166,7 @@ section .budget-list .expense-title {
 }
 
 section .budget-list .income-list, section .budget-list .expense-list {
-    width: 25vw;
+    width: 30vw;
     float: left;
 }
 
@@ -224,9 +225,7 @@ section .budget-list .space {
     margin: 10px;
     padding: 5px 10px;
     border-radius: 50%;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity .7s linear;
+    display: none;
     cursor: pointer;
 }
 
@@ -245,6 +244,5 @@ section .budget-list .space {
 }
 
 .item:hover > .item-delete {
-    visibility: visible;
-    opacity: 1;
+    display: block;
 }
